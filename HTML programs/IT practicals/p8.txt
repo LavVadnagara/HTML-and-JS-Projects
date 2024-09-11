@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>Student Results</title>
+<script type="text/javascript">
+function getReport()
+{
+var grade = "";
+var result="";
+var engMarks = document.getElementById('txtEnglish').value;
+var GujaratiMarks = document.getElementById('txtGujarati').value;
+var mathsMarks = document.getElementById('txtMaths').value;
+var scienceMarks = document.getElementById('txtScience').value;
+var totalMarks = engMarks - ( - GujaratiMarks) - ( - mathsMarks) - ( - scienceMarks);
+var averageMarks = totalMarks / 4;
+switch((averageMarks>60&&averageMarks<=100)?1:(averageMarks>50&&averageMarks<60)?2:(averageMarks>40&&averageMarks<50)?3:0)
+{
+case 1 :grade ="A";
+result="First Class";
+break;
+case 2 :grade = "B";
+result="Second Class";
+break;
+case 3 :grade = "C";
+result="Third Class";
+break;
+case 0 :grade = "D";
+result="Fail";
+break;
+}
+document.getElementById('txtStudentName').value = document.getElementById('txtName').value;
+document.getElementById('txtStudentClass').value = document.getElementById('txtClass').value;
+document.getElementById('txtTotalMarks').value = totalMarks;
+document.getElementById('txtAvgMarks').value = averageMarks;
+document.getElementById('txtGrade').value = grade;
+document.getElementById('txtResult').value = result;
+}
+</script>
+</head>
+<body>
+<fieldset style="width:600px">
+<legend><b>Student Input Section</b></legend>
+Name : <input type="text" id="txtName"> &nbsp;&nbsp;
+Class : <input type="text" id="txtClass"> <br/><br/>
+<table border="1">
+<tr><td>English </td><td><input type="text" id="txtEnglish"></td></tr>
+<tr><td>Gujarati </td><td><input type="text" id="txtGujarati"></td></tr>
+<tr><td>Maths </td><td><input type="text" id="txtMaths"></td></tr>
+<tr><td>Science </td><td><input type="text" id="txtScience"></td></tr>
+</table><br/><br/>
+<input type="button" value="Get Result" onClick="getReport();">
+</fieldset>
+<fieldset style="width:600px">
+<legend><b>Report Card</b></legend>
+<table border="1">
+<tr><td>Name </td><td><input type="text" id="txtStudentName" readonly></td></tr>
+<tr><td>Class </td><td><input type="text" id="txtStudentClass" readonly></td></tr>
+<tr><td>Total Marks </td><td><input type="text" id="txtTotalMarks" readonly></td></tr>
+<tr><td>Average Marks </td><td><input type="text" id="txtAvgMarks" readonly></td></tr>
+<tr><td>Grade </td><td><input type="text" id="txtGrade" readonly></td></tr>
+<tr><td>Remarks </td><td><input type="text" id="txtResult" readonly></td></tr>
+</table>
+</fieldset>
+</body>
+</html>

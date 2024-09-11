@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Greater Dice Game</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        .Diceimg1, .Diceimg2{
+            height: 200px;
+            width: 200px;
+        }
+        .dice {
+            padding: 20px;
+            text-align: center; 
+            display: inline-block;
+        }
+        p {
+          font-size: 20px;  
+        }
+        button {
+            font-size: 20px;
+            padding: 20px;
+            border-radius: 20px;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Dice Game</h1>
+
+      <h2>Lets start !!!</h2>
+
+      <div class="dice">
+        <p class="P1">Player - 1</p>
+        <img src="Dice1.jpg" class="Diceimg1">
+      </div>
+
+      <div class="dice">
+        <p class="P2">Player - 2</p>
+        <img src="Dice1.jpg" class="Diceimg2">
+      </div>
+
+      <div class="RollDice">
+        <button class="btn" onclick="rollDice()">Roll the Dice</button>
+      </div>
+
+    </div>
+    <script>
+        var player1 = "Player - 1";
+        var player2 = "Player - 2";
+
+        function rollDice(){
+            setTimeout(function(){
+                var randomDice1 = Math.floor(Math.random() * 6) + 1;
+                var randomDice2 = Math.floor(Math.random() * 6) + 1;
+
+                document.querySelector(".Diceimg1").setAttribute("src","Dice" + randomDice1 + ".jpg");
+                document.querySelector(".Diceimg2").setAttribute("src","Dice" + randomDice2 + ".jpg");
+
+                if(randomDice1 === randomDice2) {
+                    document.querySelector("h2").textContent = "Draw!!! Both players have same number.";
+                }
+
+                else if(randomDice1 < randomDice2){
+                    document.querySelector("h2").textContent = (player2 + " has greater number and Wins!!!");
+                }
+                
+                else{
+                    document.querySelector("h2").textContent = (player1 + " has greater number and Wins!!!");
+                }
+
+            }, 500);
+        }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<html>
+  <body style="font-family: Adani;">
+    <h1 style="text-align: center;">HTML Form input types</h1> <hr>
+    <form>
+      <h3>Textbox :-</h3>
+      <label for="Fullname">Name : </label><input type="text" name="fname" id="Fullname" /><hr>
+
+      <h3>Textarea :-</h3>
+      <label for="TextArea">Address : </label><br /><textarea name="txtarea1" id="TextArea" rows="3" cols="30"></textarea><br /><hr>
+
+      <h3>Password :-</h3>
+      <label for="Pswd">Password : </label><input type="password"  name="pwd" id="Pswd" /><br />
+      <input type="checkbox" id="SwPd" onclick="ShowPD()"><label for="SwPd">Show Password</label><hr>
+
+      <h3>Radio Buttons :-</h3>
+      <label for="Male">Male </label><input type="radio" name="gender" id="Male" value="male" /><br />
+      <label for="Female">Female </label><input type="radio" name="gender" id="Female" value="female" /><br />
+      <label for="Other">Other </label><input type="radio" name="gender" id="Other" value="other" /><hr>
+      
+      <h3>Check Boxes :-</h3>
+      <label for="Bike">I have a Bike.</label><input type="checkbox" name="vehicle" id="Bike" value="Bike" /><br />
+      <label for="Car">I have a Car.</label><input type="checkbox" name="vehicle" id="Car" value="Car" /><br /><hr>
+
+      <h3>Submit and Reset buttons :-</h3>
+      <input type="submit" value="Submit" />
+      <input type="reset" value="Reset" />
+    </form>
+    <script> function ShowPD() {
+        var x = document.getElementById("Pswd");
+        if (x.type === "password") { x.type = "text"; } else { x.type = "password"; }
+      }
+    </script>
+  </body>
+</html>

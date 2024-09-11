@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            display: grid;
+            place-items: center;
+            margin: 0rem 0px 0px 0px;
+            border: 2px solid blue;
+            height: 99.5vh;
+            width: 99.5vw;
+        }
+
+        details>summary,
+        p {
+            margin: 1rem;
+            transition-duration: 0.4s;
+            padding: 10px;
+            background-color: rgb(0, 150, 255);
+            color: red;
+            border: 15px outset rgb(190, 190, 190);
+            border-radius: 1rem;
+            box-shadow: 0px 0px 20px rgb(0, 0, 0);
+            cursor: pointer;
+            font: bold 1.5rem consolas;
+            max-width: 20rem;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dynamicDetails"></div>
+
+    <script>
+        // Function to create a summary element
+        function createSummary(text) {
+            var summary = document.createElement('summary');
+            summary.textContent = text;
+            return summary;
+        }
+
+        // Create details elements using JavaScript
+        var topLevelDetails = document.createElement('details');
+        topLevelDetails.appendChild(createSummary('Click this'));
+
+        var secondLevelDetails = document.createElement('details');
+        secondLevelDetails.appendChild(createSummary("You don't win by keeping the one who wants to leave, You lose!!"));
+
+        var thirdLevelDetails = document.createElement('details');
+        thirdLevelDetails.appendChild(createSummary('1. Keeping someone against their will, will further push them away from you.'));
+
+        var fourthLevelDetails = document.createElement('details');
+        fourthLevelDetails.appendChild(createSummary('2.You will constantly seek love from them which you will never get.'));
+
+        var fifthLevelDetails = document.createElement('details');
+        fifthLevelDetails.appendChild(createSummary('3. More importantly, they will hold up the space someone new could have walked into and loved you like you deserved.'));
+
+        // Create the final paragraph
+        var finalParagraph = document.createElement('details');
+        finalParagraph.appendChild(createSummary('You lose by keeping someone who doesn\'t want you.'));
+
+        // Append all details and paragraph elements
+        fifthLevelDetails.appendChild(finalParagraph);
+        fourthLevelDetails.appendChild(fifthLevelDetails);
+        thirdLevelDetails.appendChild(fourthLevelDetails);
+        secondLevelDetails.appendChild(thirdLevelDetails);
+        topLevelDetails.appendChild(secondLevelDetails);
+
+        // Append the top-level details to the dynamicDetails div
+        document.getElementById('dynamicDetails').appendChild(topLevelDetails);
+    </script>
+</body>
+
+</html>

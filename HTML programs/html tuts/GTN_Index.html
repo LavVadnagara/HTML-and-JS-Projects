@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number Guessing Game</title>
+    <style>
+      body {
+        background: rgb(200, 200, 200);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        width: 60%;
+        max-width: 400px;
+        border: 5px solid #252525;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+      }
+      input[type="text"] {
+        width: 100px;
+        font-weight: 500;
+        padding: 10px;
+        font-size: 20px;
+        text-align: center;
+        margin-top: 10px;
+        border-radius: 5px;
+        border: 2px solid black;
+        color: black;
+        margin: 20px;
+      }
+      button {
+        width: 100px;
+        padding: 10px;
+        color: black;
+        font-size: 15px;
+        margin: 10px;
+        cursor: pointer;
+      }
+      p {
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h3>I am thinking of a number between 1 - 100, try to guess my number.</h3>
+      <input type="text" id="InputNum" /><br />
+      <button id="GuessBtn" onclick="play()">Submit</button>
+      <button id="RestartBtn" onclick="restart()">Restart</button>
+      <p id="Msg1">Number of Guess(es): 0</p>
+      <p id="Msg2">Guessed number are: none</p>
+      <p id="Msg3"></p>
+    </div>
+    <script>
+      const msg1 = document.getElementById("Msg1");
+      const msg2 = document.getElementById("Msg2");
+      const msg3 = document.getElementById("Msg3");
+      let answer = Math.floor(Math.random() * 100) + 1;
+      let no_of_guesses = 0;
+      let guesses_num = [];
+      
+      document.getElementById("InputNum").addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+          play();
+        }
+      });
+
+      function play() {
+        const user_guess = document.getElementById("InputNum").value;
+        if (user_guess < 1 || user_guess > 100) {
+          alert("Please Enter a number Between 1 to 100");
+        } else {
+          guesses_num.push(user_guess);
+          no_of_guesses += 1;
+          if (user_guess < answer) {
+            msg1.textContent = "Your Guessed number is Less Than my Number.";
+          } else if (user_guess > answer) {
+            msg1.textContent = "Your Guessed number is Greater Than my Number.";
+          } else {
+            msg1.textContent = "Perfect You Guessed my number.";
+            msg2.textContent = "The Number was " + answer;
+            msg3.textContent = "You guessed it in " + no_of_guesses + " guesses";
+            return;
+          }
+          msg2.textContent = "No. Of Guesses: " + no_of_guesses;
+          msg3.textContent = "Guessed Numbers: " + guesses_num.join(", ");
+          document.getElementById("InputNum").value = '';
+        }
+      }
+
+      function restart() {
+        answer = Math.floor(Math.random() * 100) + 1;
+        no_of_guesses = 0;
+        guesses_num = [];
+        msg1.textContent = "Number of Guess(es): 0";
+        msg2.textContent = "Guessed numbers are: none";
+        msg3.textContent = "";
+        document.getElementById("InputNum").value = '';
+      }
+    </script>
+  </body>
+</html>

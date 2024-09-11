@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialog box tutorial</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        dialog {
+            border: none;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0, 0.1);
+        }
+        button {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            height: 2.05rem;
+            width: 4rem;
+            margin: auto;
+            cursor: pointer;
+            display: flex;
+            justify-content: flex-end;
+            justify-content: center;
+            padding: 5px;
+            box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <button id="openDis">Open</button>
+    <dialog id="myDialog" aria-labelledby="dialogTitle" aria-describedby="dialogDesc">
+        <form method="dialog">
+            <h2 id="dialogTitle">Dialog title</h2>
+            <p id="dialogDesc">This is the dialog body! Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, totam!</p>
+            <button id="closeDis">Close</button>
+        </form>
+    </dialog>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dialog = document.querySelector('#myDialog');
+            const openDialog = document.querySelector('#openDis');
+            const closeDialog = document.querySelector('#closeDis');
+
+            openDialog.addEventListener('click', function() {
+                dialog.showModal();
+            });
+
+            closeDialog.addEventListener('click', function() {
+                dialog.close();
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<body> 
+<p>This is normal text</p> 
+<p>This is <b>BOLD</b> text.</p>
+<p>This is <i>ITALIC</i> text.</p>
+<p>This is <u>UNDERLINE</u> text.</p>
+<p>This is <strike>STRIKE THROUGH</strike> text.</p>
+<p>This is <strong>IMPORTANT</strong> text.</p>
+<p>This is <mark>MARKED</mark> text.</p>
+<p>This is <small>SMALLER</small> text.</p>
+<p>This is <big>BIGGER</big> text.</p>
+<p>This is <sup>superscripted</sup> text.</p>
+<p>This is <sub>subscripted</sub> text.</p>
+<p>This is <font color="green">GREEN</font> text.</p>
+</body>
+</html>

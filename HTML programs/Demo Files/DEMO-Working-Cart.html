@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Food Cart</title>
+    <style>
+        :root {
+            --LogoFont: 'Glass Antiqua', cursive;
+            --BodyFont: 'Josefin Sans', sans-serif;
+            --ColorStyle: #ff6961;
+            --FontSize: 14px;
+        }
+
+        body {
+            font-family: var(--BodyFont);
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            color: white;
+            overflow: hidden;
+        }
+
+        nav a {
+            display: block;
+            padding: 14px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            float: left;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .banner {
+            background-color: #e74c3c;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .food-item {
+            background-color: white;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .food-item img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .food-item h3 {
+            margin-top: 0;
+        }
+
+        .food-item .description {
+            margin: 10px 0;
+        }
+
+        .food-item .price,
+        .food-item .quantity,
+        .food-item .total-price {
+            margin: 5px 0;
+        }
+
+        .food-item .price {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .food-item .quantity {
+            display: flex;
+            align-items: center;
+        }
+
+        .food-item .quantity input {
+            width: 50px;
+            margin: 0 10px;
+            text-align: center;
+        }
+
+        .checkout {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .checkout button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .checkout button:hover {
+            background-color: #c0392b;
+        }
+
+        /* footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        } */
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <script>
+        function updateTotalPrice(item) {
+            const quantity = item.querySelector('.quantity input').value;
+            const price = parseFloat(item.querySelector('.price').dataset.price);
+            const totalPriceElement = item.querySelector('.total-price');
+            const totalPrice = quantity * price;
+            totalPriceElement.textContent = 'Total: $' + totalPrice.toFixed(2);
+
+            updateCartTotal();
+        }
+
+        function updateCartTotal() {
+            const items = document.querySelectorAll('.food-item');
+            let cartTotal = 0;
+            items.forEach(item => {
+                const totalPriceElement = item.querySelector('.total-price');
+                const totalPrice = parseFloat(totalPriceElement.textContent.replace('Total: $', ''));
+                cartTotal += totalPrice;
+            });
+            document.getElementById('cart-total').textContent = 'Cart Total: $' + cartTotal.toFixed(2);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const quantityInputs = document.querySelectorAll('.quantity input');
+            quantityInputs.forEach(input => {
+                input.addEventListener('change', (event) => {
+                    if (event.target.value < 1) {
+                        event.target.value = 1;
+                    }
+                    const item = event.target.closest('.food-item');
+                    updateTotalPrice(item);
+                });
+            });
+            updateCartTotal();
+        });
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Restaurant Name</h1>
+    </header>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Menu</a>
+        <a href="#">Food Cart</a>
+        <a href="#">Contact</a>
+    </nav>z
+    <div class="banner">
+        <h2>Special Offer: Free Delivery on Orders Over $50!</h2>
+    </div>
+    <div class="container">
+        <div class="food-item">
+            <h3>Food Item 1</h3>
+            <p class="description">A delicious description of the food item goes here.</p>
+            <p class="price" data-price="10.00">$10.00</p>
+            <div class="quantity">
+                <label for="quantity1">Quantity: </label>
+                <input type="number" id="quantity1" name="quantity1" value="1" min="1">
+            </div>
+            <p class="total-price">Total: $10.00</p>
+        </div>
+        <div class="food-item">
+            <h3>Food Item 2</h3>
+            <p class="description">A delicious description of the food item goes here.</p>
+            <p class="price" data-price="12.00">$12.00</p>
+            <div class="quantity">
+                <label for="quantity2">Quantity: </label>
+                <input type="number" id="quantity2" name="quantity2" value="1" min="1">
+            </div>
+            <p class="total-price">Total: $12.00</p>
+        </div>
+        <!-- Add more food items as needed -->
+        <div class="checkout">
+            <p id="cart-total">Cart Total: $0.00</p>
+            <button>Proceed to Checkout</button>
+        </div>
+    </div>
+    <!-- <footer>
+        <p>&copy; 2024 Restaurant Name. All rights reserved.</p>
+    </footer> -->
+</body>
+
+</html>
