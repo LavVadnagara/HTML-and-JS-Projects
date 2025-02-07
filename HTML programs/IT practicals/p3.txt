@@ -1,6 +1,0 @@
-<!DOCTYPE html>
-<html>
-<body>
-<p><a href="https://www.google.com/">GOOGLE LINK</a></p>
-</body>
-</html>

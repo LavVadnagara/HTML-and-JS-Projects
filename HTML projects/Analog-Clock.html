@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clock with Numbers and Blue Neuromorphic Style</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: monospace;
+      background-color: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #clock {
+      position: relative;
+      width: 25rem;
+      height: 25rem;
+      border-radius: 50%;
+      background: #1e2a47;
+      box-shadow: inset 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.2), inset -0.5rem -0.5rem 1rem rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .dot {
+      width: 0.6875rem;
+      height: 0.6875rem;
+      border-radius: 50%;
+      background-color: black;
+      z-index: 1;
+    }
+
+    /* Hour, Minute, and Second Hands */
+    .hour-line,
+    .minute-line,
+    .second-line {
+      position: absolute;
+      bottom: 50%;
+      left: 50%;
+      transform-origin: 50% 100%;
+      transform: translateX(-50%);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .hour-line {
+      width: 0.5rem;
+      height: 6rem;
+      border-radius: 2rem;
+      background-color: red;
+      /* Red color for hour */
+    }
+
+    .minute-line {
+      width: 0.375rem;
+      height: 8rem;
+      border-radius: 2rem;
+      background-color: blue;
+      /* Blue color for minute */
+    }
+
+    .second-line {
+      width: 0.125rem;
+      height: 9.5rem;
+      border-radius: 2rem;
+      background-color: lime;
+      /* Green color for second */
+    }
+
+    /* Number positioning */
+    .number {
+      position: absolute;
+      width: 1.5rem;
+      text-align: center;
+      font-size: 1.125rem;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    /* Positioning numbers around the clock */
+    .number[data-num="12"] {
+      transform: rotate(0deg) translate(0, -11.25rem) rotate(0deg);
+    }
+
+    .number[data-num="1"] {
+      transform: rotate(30deg) translate(0, -11.25rem) rotate(-30deg);
+    }
+
+    .number[data-num="2"] {
+      transform: rotate(60deg) translate(0, -11.25rem) rotate(-60deg);
+    }
+
+    .number[data-num="3"] {
+      transform: rotate(90deg) translate(0, -11.25rem) rotate(-90deg);
+    }
+
+    .number[data-num="4"] {
+      transform: rotate(120deg) translate(0, -11.25rem) rotate(-120deg);
+    }
+
+    .number[data-num="5"] {
+      transform: rotate(150deg) translate(0, -11.25rem) rotate(-150deg);
+    }
+
+    .number[data-num="6"] {
+      transform: rotate(180deg) translate(0, -11.25rem) rotate(-180deg);
+    }
+
+    .number[data-num="7"] {
+      transform: rotate(210deg) translate(0, -11.25rem) rotate(-210deg);
+    }
+
+    .number[data-num="8"] {
+      transform: rotate(240deg) translate(0, -11.25rem) rotate(-240deg);
+    }
+
+    .number[data-num="9"] {
+      transform: rotate(270deg) translate(0, -11.25rem) rotate(-270deg);
+    }
+
+    .number[data-num="10"] {
+      transform: rotate(300deg) translate(0, -11.25rem) rotate(-300deg);
+    }
+
+    .number[data-num="11"] {
+      transform: rotate(330deg) translate(0, -11.25rem) rotate(-330deg);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="clock">
+    <div class="dot"></div>
+    <!-- Clock Hands -->
+    <div class="hour-line" id="hourLine"></div>
+    <div class="minute-line" id="minuteLine"></div>
+    <div class="second-line" id="secondLine"></div>
+
+    <!-- Numbers on the Clock -->
+    <div class="number" data-num="12">12</div>
+    <div class="number" data-num="1">1</div>
+    <div class="number" data-num="2">2</div>
+    <div class="number" data-num="3">3</div>
+    <div class="number" data-num="4">4</div>
+    <div class="number" data-num="5">5</div>
+    <div class="number" data-num="6">6</div>
+    <div class="number" data-num="7">7</div>
+    <div class="number" data-num="8">8</div>
+    <div class="number" data-num="9">9</div>
+    <div class="number" data-num="10">10</div>
+    <div class="number" data-num="11">11</div>
+  </div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const hours = now.getHours() || 12;
+      const minutes = now.getMinutes();
+      const seconds = now.getSeconds();
+
+      // Calculate angles for hour, minute, and second hands
+      const hourAngle = (hours % 12) * 30 + minutes * 0.5;
+      const minuteAngle = minutes * 6;
+      const secondAngle = seconds * 6;
+
+      // Rotate the clock hands based on the calculated angles
+      $("#hourLine").css("transform", "rotate(" + hourAngle + "deg)");
+      $("#minuteLine").css("transform", "rotate(" + minuteAngle + "deg)");
+      $("#secondLine").css("transform", "rotate(" + secondAngle + "deg)");
+    }
+
+    // Update the clock every second
+    setInterval(updateClock, 1000);
+
+    // Initial call to display the clock immediately
+    updateClock();
+  </script>
+
+</body>
+
+</html>

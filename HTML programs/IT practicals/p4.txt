@@ -1,7 +1,0 @@
-<!DOCTYPE html>
-<html>
-<body>
-<p>TREE Image</p>
-<img src="pic_TREE.jpg" alt="TREE image">
-</body>
-</html>

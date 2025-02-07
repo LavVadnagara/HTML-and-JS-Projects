@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="menu.xsl"?>
+<restaurant>
+    <dish category="starter">
+        <name>Tomato Soup</name>
+        <addons>Bread pieces</addons>
+        <price>80.00 Rupees</price>
+    </dish>
+    <dish category="starter">
+        <name>Paneer Kebab</name>
+        <addons>Green chutney</addons>
+        <price>115.00 Rupees</price>
+    </dish>
+    <dish category="main course">
+        <name>Punjabi Thali</name>
+        <addons>Naan</addons>
+        <price>225.00 Rupees</price>
+    </dish>
+    <dish category="main course">
+        <name>Gujarati Thali</name>
+        <addons>Chaas</addons>
+        <price>150.00 Rupees</price>
+    </dish>
+    <dish category="beverages">
+        <name>Sprite</name>
+        <price>50.00 Rupees</price>
+    </dish>
+    <dish category="beverages">
+        <name>Thums Up</name>
+        <price>50.00 Rupees</price>
+    </dish>
+    <dish category="dessert">
+        <name>Chocolate Ice Cream</name>
+        <price>45.00 Rupees</price>
+    </dish>
+</restaurant>
